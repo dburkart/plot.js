@@ -1,0 +1,17 @@
+{
+  "name": "graphy",
+  "version": "0.0.1",
+  "description": "Graph creation library for node.js",
+  "main": "lib/main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "keywords": [
+    "graph"
+  ],
+  "author": "Dana Burkart",
+  "license": "MIT"
+}
