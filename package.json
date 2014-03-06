@@ -13,5 +13,9 @@
     "graph"
   ],
   "author": "Dana Burkart",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+      "mocha": "",
+      "should": ""
+  }
 }
