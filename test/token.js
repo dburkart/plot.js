@@ -106,6 +106,13 @@ describe('token.make', function() {
             result.should.eql(token.type.binaryOp);
         });
     });
+
+    describe('with funciton definition', function() {
+        it('def returns token.type.func', function() {
+            var result = token.make('def');
+            result.should.eql(token.type.func);
+        });
+    });
 });
 
 describe('token.validAsPrefix()', function() {

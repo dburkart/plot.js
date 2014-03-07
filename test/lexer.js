@@ -102,4 +102,38 @@ describe('lexer', function() {
             result.next().value.should.eql(5);
         });
     });
+
+    describe('with function definition of \'def f(x)\'', function() {
+        it("returns token of type token.type.func'", function() {
+            var result = new Lexer('def f(x)');
+            result.next().type.should.equal(token.type.func);
+        });
+
+        it("returns token of value 'f'", function() {
+            var result = new Lexer('def f(x)');
+            result.next().value.should.equal('f');
+        });
+
+        it("returns token with parameter list [x]", function() {
+            var result = new Lexer('def f(x)');
+            result.next().parameters.should.containDeep(['x']);
+        });
+    });
+
+    describe('with function definition of \'def foo(x,y,z)\'', function() {
+        it("returns token of type token.type.func'", function() {
+            var result = new Lexer('def foo(x,y,z)');
+            result.next().type.should.equal(token.type.func);
+        });
+
+        it("returns token of value 'foo'", function() {
+            var result = new Lexer('def foo(x,y,z)');
+            result.next().value.should.equal('foo');
+        });
+
+        it("returns token with parameter list [x, y, z]", function() {
+            var result = new Lexer('def foo(x,y,z)');
+            result.next().parameters.should.containDeep(['x', 'y', 'z']);
+        });
+    });
 });
