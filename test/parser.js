@@ -66,6 +66,34 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('with \'10 % 2\'', function() {
+        it('returns 0', function() {
+            var parser = new Parser('10 % 2');
+            parser.eval().should.be.equal(0);
+        });
+    });
+
+    describe('with \'10 % 3\'', function() {
+        it('returns 1', function() {
+            var parser = new Parser('10 % 3');
+            parser.eval().should.be.equal(1);
+        });
+    });
+
+    describe('with \'10 * 10 % 3\'', function() {
+        it('returns 1', function() {
+            var parser = new Parser('10 * 10 % 3');
+            parser.eval().should.be.equal(1);
+        });
+    });
+
+    describe('with \'10 % 3 * 10\'', function() {
+        it('returns 10', function() {
+            var parser = new Parser('10 % 3 * 10');
+            parser.eval().should.be.equal(10);
+        });
+    });
+
     describe('with \'4 ^ 3\'', function() {
         it('returns 64', function() {
             var parser = new Parser('4 ^ 3');
