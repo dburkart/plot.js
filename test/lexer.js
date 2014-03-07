@@ -13,6 +13,12 @@ describe('lexer', function() {
         	var result = new Lexer(' ');
         	result.next().type.should.eql(token.type.nil);
         });
+
+        it('next() called twice returns token of type token.type.nil', function() {
+            var result = new Lexer(' ');
+            result.next();
+            result.next().type.should.eql(token.type.nil);
+        })
     });
 
     describe('with string of \'1 + 2\'', function() {

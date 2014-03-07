@@ -18,6 +18,18 @@ describe('token.make', function() {
             var result = token.make('12');
             result.should.eql(token.type.numeric);
         });
+        it('-3 returns token.type.numeric', function() {
+            var result = token.make('-3');
+            result.should.eql(token.type.numeric);
+        });
+        it('4.2 returns token.type.numeric', function() {
+            var result = token.make('4.2');
+            result.should.eql(token.type.numeric);
+        });
+        it('-4.2 returns token.type.numeric', function() {
+            var result = token.make('-4.2');
+            result.should.eql(token.type.numeric);
+        });
         it('953250342132 returns token.type.numeric', function() {
             var result = token.make('953250342132');
             result.should.eql(token.type.numeric);
