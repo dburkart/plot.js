@@ -3,9 +3,44 @@ var Parser = require('../lib/parser');
 var Lexer = require('../lib/lexer');
 
 describe('Parser.eval()', function() {
+    describe('with \'1\'', function() {
+        it('returns 1', function() {
+            var parser = new Parser('1');
+            parser.eval().should.equal(1);
+        });
+    });
+
+    describe('with \'x = 3\nx\'', function() {
+        it('returns 3', function() {
+            var parser = new Parser('x = 3\nx');
+            parser.eval().should.equal(3);
+        });
+    });
+
+    describe('with \'x = 3 , 4\nx\'', function() {
+        it('returns 4', function() {
+            var parser = new Parser('x = 3 , 4\nx');
+            parser.eval().should.equal(4);
+        });
+    });
+
+    describe('with \'y = 4\nx = y, y+1\nx\'', function() {
+        it('returns 5', function() {
+            var parser = new Parser('y = 4\nx = y, y + 1\nx');
+            parser.eval().should.equal(5);
+        });
+    });
+
     describe('with \'1 + 2\'', function() {
         it('returns 3', function() {
             var parser = new Parser('1 + 2');
+            parser.eval().should.eql(3);
+        });
+    });
+
+    describe('with \'1+2\'', function() {
+        it('returns 3', function() {
+            var parser = new Parser('1+2');
             parser.eval().should.eql(3);
         });
     });
