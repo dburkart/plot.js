@@ -134,4 +134,27 @@ describe('Parser.eval()', function() {
             parser.eval().should.be.equal(8);
         })
     });
+
+    // Test variable assignment
+    describe('variable assignment', function () {
+        it("'a = 2' returns 2", function() {
+            var parser = new Parser('a = 2');
+            parser.eval().should.be.equal(2);
+        });
+
+        it("'a = 2\n4 * a' returns 8", function() {
+            var parser = new Parser('a = 2\n4 * a');
+            parser.eval().should.be.equal(8);
+        })
+
+        it("'a = 2\na = 3 * a' returns 6", function() {
+            var parser = new Parser('a = 2\na = 3 * a');
+            parser.eval().should.be.equal(6);
+        })
+
+        it("'foo = 2\nfoo' returns 2", function() {
+            var parser = new Parser('foo = 2\nfoo');
+            parser.eval().should.be.equal(2);
+        })
+    });
 });
