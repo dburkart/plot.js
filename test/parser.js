@@ -230,4 +230,15 @@ describe('Parser.eval()', function() {
             parser.eval().should.be.equal(16);
         });
     });
+
+    describe('nested function calls', function() {
+        it("'f(x) = 2 * x\ng(x) = x + 3\ng(f(4))' returns 11", function() {
+            var parser = new Parser('f(x) = 2 * x\ng(x) = x + 3\ng(f(4))');
+            parser.eval().should.be.equal(11);
+        });
+        it("'f(x) = 2 * x\nsqrt(f(8))' returns 4", function() {
+            var parser = new Parser('f(x) = 2 * x\nsqrt(f(8))');
+            parser.eval().should.be.equal(4);
+        });
+    });
 });
