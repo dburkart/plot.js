@@ -1,23 +1,6 @@
 var should = require('should');
 var token = require('../lib/token');
 
-// describe('lexer', function() {
-//     describe('with empty string', function() {
-//         it('returns an object with empty input', function() {
-//             var result = new Lexer('');
-//             result.input.should.eql('');
-//         });
-//     });
-
-//     describe('with string of \'1 + 2\'', function() {
-//     	var input = '1 + 2';
-//     	it('returns an object with input of \'1 + 2\'', function() {
-//     		var result = new Lexer(input);
-//     		result.input.should.eql(input);
-//     	})
-//     })
-// });
-
 describe('token.make', function() {
     describe('with empty string', function() {
         it('returns token.type.nil', function() {
