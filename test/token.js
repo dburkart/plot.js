@@ -107,3 +107,41 @@ describe('token.make', function() {
         });
     });
 });
+
+describe('token.validAsPrefix()', function() {
+    describe('with (', function() {
+        it('returns false', function() {
+            token.validAsPrefix('(').should.not.be.ok;
+        });
+    });
+
+    describe('with )', function() {
+        it('returns false', function() {
+            token.validAsPrefix(')').should.not.be.ok;
+        });
+    });
+
+    describe('with *', function() {
+        it('returns false', function() {
+            token.validAsPrefix('*').should.not.be.ok;
+        });
+    });
+
+    describe('with /', function() {
+        it('returns false', function() {
+            token.validAsPrefix('/').should.not.be.ok;
+        });
+    });
+
+    describe('with +', function() {
+        it('returns false', function() {
+            token.validAsPrefix('+').should.be.ok;
+        });
+    });
+
+    describe('with -', function() {
+        it('returns false', function() {
+            token.validAsPrefix('-').should.be.ok;
+        });
+    });
+});

@@ -1,5 +1,9 @@
 var should = require('should');
 var Parser = require('../lib/parser');
+var Lexer = require('../lib/lexer');
+
+// var parser = new Parser('23 / -4');
+// console.log(parser.eval());
 
 describe('Parser.eval()', function() {
     describe('with \'1 + 2\'', function() {
@@ -105,6 +109,22 @@ describe('Parser.eval()', function() {
         it('returns 8', function() {
             var parser = new Parser('6 * 4 / 3');
             parser.eval().should.be.equal(8);
+        });
+    });
+
+    // Test parenthesis
+    describe('with \'(4 + 2) * 6\'', function() {
+        it('returns 36', function() {
+            var parser = new Parser('(4 + 2) * 6');
+            parser.eval().should.be.equal(36);
+        });
+    });
+
+    // Test adding negative numbers
+    describe('with \'8 + -4\'', function() {
+        it('returns 4', function() {
+            var parser = new Parser('8 + -4');
+            parser.eval().should.be.equal(4);
         });
     });
 });

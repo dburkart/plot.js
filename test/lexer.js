@@ -63,9 +63,9 @@ describe('lexer', function() {
     		result.next();
     		result.next().type.should.eql(token.type.numeric);
     	});
-    })
+    });
 
-     describe('with string of \'1\t2\'', function() {
+    describe('with string of \'1\t2\'', function() {
     	var input = '1\t2';
     	it('next() returns token of type token.type.numeric', function() {
     		var result = new Lexer(input);
@@ -77,5 +77,29 @@ describe('lexer', function() {
     		result.next();
     		result.next().type.should.eql(token.type.numeric);
     	});
-    })
+    });
+
+    describe('with string of \'-5\'', function() {
+        it('next() returns token of type token.type.numeric', function() {
+            var result = new Lexer('-5');
+            result.next().type.should.eql(token.type.numeric);
+        });
+
+        it('next() returns token of value -5', function() {
+            var result = new Lexer('-5');
+            result.next().value.should.eql(-5);
+        });
+    });
+
+    describe('with string of \'+5\'', function() {
+        it('next() returns token of type token.type.numeric', function() {
+            var result = new Lexer('+5');
+            result.next().type.should.eql(token.type.numeric);
+        });
+
+        it('next() returns token of value 5', function() {
+            var result = new Lexer('+5');
+            result.next().value.should.eql(5);
+        });
+    });
 });
