@@ -103,37 +103,83 @@ describe('lexer', function() {
         });
     });
 
-    describe('with function definition of \'def f(x)\'', function() {
+    describe('with string of \'()\'', function() {
+        it('next() returns token of type token.type.unaryOp', function() {
+            var result = new Lexer('()');
+            result.next().type.should.eql(token.type.unaryOp);
+        });
+
+        it('next() returns token of value \'(\'', function() {
+            var result = new Lexer('()');
+            result.next().value.should.eql('(');
+        });
+    })
+
+    describe('with function definition of \'f(x)\'', function() {
         it("returns token of type token.type.func'", function() {
-            var result = new Lexer('def f(x)');
+            var result = new Lexer('f(x)');
             result.next().type.should.equal(token.type.func);
         });
 
         it("returns token of value 'f'", function() {
-            var result = new Lexer('def f(x)');
+            var result = new Lexer('f(x)');
             result.next().value.should.equal('f');
         });
 
         it("returns token with parameter list [x]", function() {
-            var result = new Lexer('def f(x)');
+            var result = new Lexer('f(x)');
             result.next().parameters.should.containDeep(['x']);
         });
     });
 
-    describe('with function definition of \'def foo(x,y,z)\'', function() {
+    describe('with function definition of \'foo(x,y,z)\'', function() {
         it("returns token of type token.type.func'", function() {
-            var result = new Lexer('def foo(x,y,z)');
+            var result = new Lexer('foo(x,y,z)');
             result.next().type.should.equal(token.type.func);
         });
 
         it("returns token of value 'foo'", function() {
-            var result = new Lexer('def foo(x,y,z)');
+            var result = new Lexer('foo(x,y,z)');
             result.next().value.should.equal('foo');
         });
 
         it("returns token with parameter list [x, y, z]", function() {
-            var result = new Lexer('def foo(x,y,z)');
+            var result = new Lexer('foo(x,y,z)');
             result.next().parameters.should.containDeep(['x', 'y', 'z']);
+        });
+    });
+
+    describe('with function call of \'foo(56)\'', function() {
+        it("returns token of type token.type.func'", function() {
+            var result = new Lexer('foo(56)');
+            result.next().type.should.equal(token.type.func);
+        });
+
+        it("returns token of value 'foo'", function() {
+            var result = new Lexer('foo(56)');
+            result.next().value.should.equal('foo');
+        });
+
+        it("returns token with parameter list [56]", function() {
+            var result = new Lexer('foo(56)');
+            result.next().parameters.should.containDeep([56]);
+        });
+    });
+
+    describe('with function call of \'foo()\'', function() {
+        it("returns token of type token.type.func'", function() {
+            var result = new Lexer('foo()');
+            result.next().type.should.equal(token.type.func);
+        });
+
+        it("returns token of value 'foo'", function() {
+            var result = new Lexer('foo()');
+            result.next().value.should.equal('foo');
+        });
+
+        it("returns token with parameter list []", function() {
+            var result = new Lexer('foo()');
+            result.next().parameters.should.containDeep([]);
         });
     });
 });

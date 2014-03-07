@@ -2,9 +2,6 @@ var should = require('should');
 var Parser = require('../lib/parser');
 var Lexer = require('../lib/lexer');
 
-// var parser = new Parser('23 / -4');
-// console.log(parser.eval());
-
 describe('Parser.eval()', function() {
     describe('with \'1 + 2\'', function() {
         it('returns 3', function() {
@@ -156,5 +153,32 @@ describe('Parser.eval()', function() {
             var parser = new Parser('foo = 2\nfoo');
             parser.eval().should.be.equal(2);
         })
+
+        it("'foo = 10\nfoo * foo' returns 100", function() {
+            var parser = new Parser('foo = 10\nfoo * foo');
+            parser.eval().should.be.equal(100);
+        })
+    });
+
+    describe('function definition', function() {
+        it("'f(x) = 2 * x' returns true", function() {
+            var parser = new Parser('f(x) = 2 * x');
+            parser.eval().should.be.ok;
+        });
+
+        it("'f(x) = 2 * x\nf(4)' returns 8", function() {
+            var parser = new Parser('f(x) = 2 * x\nf(4)');
+            parser.eval().should.be.equal(8);
+        });
+
+        it("'f() = 4' returns true", function() {
+            var parser = new Parser('f() = 4');
+            parser.eval().should.be.ok;
+        });
+
+        it("'f() = 4\nf() * f()' returns 16", function() {
+            var parser = new Parser('f() = 4\nf() * f()');
+            parser.eval().should.be.equal(16);
+        });
     });
 });
