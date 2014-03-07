@@ -113,6 +113,18 @@ describe('lexer', function() {
             var result = new Lexer('()');
             result.next().value.should.eql('(');
         });
+    });
+
+    describe('with string of \'(-\'', function() {
+        it('next() returns token of type token.type.unaryOp', function() {
+            var result = new Lexer('(-');
+            result.next().type.should.eql(token.type.unaryOp);
+        });
+
+        it('next() returns token of value \'(\'', function() {
+            var result = new Lexer('(-');
+            result.next().value.should.eql('(');
+        });
     })
 
     describe('with function definition of \'f(x)\'', function() {
