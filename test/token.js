@@ -98,6 +98,10 @@ describe('token.make', function() {
             var result = token.make(')');
             result.should.eql(token.type.unaryOp);
         });
+        it('^ returns token.type.unaryOp', function() {
+            var result = token.make('^');
+            result.should.eql(token.type.unaryOp);
+        });
     });
 
     describe('with binary operator', function() {

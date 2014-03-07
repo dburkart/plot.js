@@ -66,6 +66,27 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('with \'4 ^ 3\'', function() {
+        it('returns 64', function() {
+            var parser = new Parser('4 ^ 3');
+            parser.eval().should.be.equal(64);
+        });
+    });
+
+    describe('with \'4 ^ 3 * 2\'', function() {
+        it('returns 64', function() {
+            var parser = new Parser('4 ^ 3 * 2');
+            parser.eval().should.be.equal(128);
+        });
+    });
+
+    describe('with \'2 * 4 ^ 3\'', function() {
+        it('returns 64', function() {
+            var parser = new Parser('2 * 4 ^ 3');
+            parser.eval().should.be.equal(128);
+        });
+    });
+
     // Test order-of-operations
     describe('with \'4 + 2 * 6\'', function() {
         it('returns 16', function() {
