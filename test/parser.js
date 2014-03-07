@@ -26,21 +26,21 @@ describe('Parser.eval()', function() {
 
     describe('with \'2 * 5\'', function() {
         it('returns 10', function() {
-            var parser = new Parser('2 * 5');
+            var parser = new Parser('2 *5');
             parser.eval().should.eql(10);
         });
     });
 
     describe('with \'2 * -5\'', function() {
         it('returns -10', function() {
-            var parser = new Parser('2 * -5');
+            var parser = new Parser('2* -5');
             parser.eval().should.eql(-10);
         });
     });
 
     describe('with \'5 * 3.21\'', function() {
         it('returns 16.05', function() {
-            var parser = new Parser('5 * 3.21');
+            var parser = new Parser('5*3.21');
             parser.eval().should.eql(16.05);
         });
     });
@@ -75,7 +75,7 @@ describe('Parser.eval()', function() {
 
     describe('with \'10 % 3\'', function() {
         it('returns 1', function() {
-            var parser = new Parser('10 % 3');
+            var parser = new Parser('10%3');
             parser.eval().should.be.equal(1);
         });
     });
