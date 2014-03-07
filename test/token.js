@@ -71,6 +71,10 @@ describe('token.make', function() {
             var result = token.make('foo');
             result.should.eql(token.type.variable);
         });
+        it('foo_ returns token.type.variable', function() {
+            var result = token.make('foo_');
+            result.should.eql(token.type.variable);
+        });
     });
 
     describe('with unary operator', function() {
