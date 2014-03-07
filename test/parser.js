@@ -64,4 +64,47 @@ describe('Parser.eval()', function() {
             parser.eval().should.be.equal(-5.75);
         });
     });
+
+    // Test order-of-operations
+    describe('with \'4 + 2 * 6\'', function() {
+        it('returns 16', function() {
+            var parser = new Parser('4 + 2 * 6');
+            parser.eval().should.be.equal(16);
+        });
+    });
+
+    describe('with \'6 * 2 + 4\'', function() {
+        it('returns 16', function() {
+            var parser = new Parser('6 * 2 + 4');
+            parser.eval().should.be.equal(16);
+        });
+    });
+
+    describe('with \'4 - 2 * 6\'', function() {
+        it('returns -8', function() {
+            var parser = new Parser('4 - 2 * 6');
+            parser.eval().should.be.equal(-8);
+        });
+    });
+
+    describe('with \'6 * 2 - 4\'', function() {
+        it('returns 8', function() {
+            var parser = new Parser('6 * 2 - 4');
+            parser.eval().should.be.equal(8);
+        });
+    });
+
+    describe('with \'10 / 5 * 6\'', function() {
+        it('returns 12', function() {
+            var parser = new Parser('10 / 5 * 6');
+            parser.eval().should.be.equal(12);
+        });
+    });
+
+    describe('with \'6 * 4 / 3\'', function() {
+        it('returns 8', function() {
+            var parser = new Parser('6 * 4 / 3');
+            parser.eval().should.be.equal(8);
+        });
+    });
 });

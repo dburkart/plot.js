@@ -1,6 +1,32 @@
 var should = require('should');
 var token = require('../lib/token');
 
+describe('token.precedence', function() {
+    describe('+', function() {
+        it('== -', function() {
+            var result = token.precedence('+') === token.precedence('-');
+            result.should.be.ok;
+        });
+
+        it('< *', function() {
+            var result = token.precedence('+') < token.precedence('*');
+            result.should.be.ok;
+        });
+
+        it('< /', function() {
+            var result = token.precedence('+') < token.precedence('/');
+            result.should.be.ok;
+        });
+    });
+
+    describe('*', function() {
+        it('== /', function() {
+            var result = token.precedence('*') === token.precedence('/');
+            result.should.be.ok;
+        })
+    });
+});
+
 describe('token.make', function() {
     describe('with empty string', function() {
         it('returns token.type.nil', function() {
