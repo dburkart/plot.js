@@ -196,6 +196,41 @@ describe('lexer', function() {
         });
     });
 
+    describe('with multiline function definition of \'f(x) = x = 2 + x,\n2 * x\'', function() {
+        it("returns token of type token.type.func'", function() {
+            var result = new Lexer('f(x) = x = 2 + x,\n2 * x');
+            result.next().type.should.equal(token.type.func);
+        });
+
+        it("returns token of value 'f'", function() {
+            var result = new Lexer('f(x) = x = 2 + x,\n2 * x');
+            result.next().value.should.equal('f');
+        });
+
+        it("returns token with parameter list [{type: token.type.variable, value: 'x'}]", function() {
+            var result = new Lexer('f(x) = x = 2 + x,\n2 * x');
+            var tok = result.next();
+            tok.parameters.should.containDeep([{type: token.type.variable, value: 'x'}]);
+        });
+    });
+
+    describe('with multiline statement of \'x,\n2\'', function() {
+        it("Returns valid tokens", function() {
+            var result = new Lexer('x,\n2');
+            var tok = result.next();
+
+            tok.type.should.be.equal(token.type.variable);
+
+            tok = result.next();
+
+            tok.type.should.be.equal(token.type.unaryOp);
+
+            tok = result.next();
+            
+            tok.type.should.be.equal(token.type.numeric);
+        });
+    });
+
     describe('with function definition of \'foo(x,y,z)\'', function() {
         it("returns token of type token.type.func'", function() {
             var result = new Lexer('foo(x,y,z)');

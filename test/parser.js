@@ -266,6 +266,33 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('multiline function definition', function() {
+        it("'f(x) = x = 2 + x,\n2 * x' returns true", function() {
+            var parser = new Parser('f(x) = x = 2 + x,\n2 * x');
+            parser.eval().should.be.ok;
+        });
+
+        it("'f(x) = x = 2 + x,\n2 * x\nf(2)' returns 8", function() {
+            var parser = new Parser('f(x) = x = 2 + x,\n2 * x\nf(2)');
+            parser.eval().should.be.equal(8);
+        });
+
+        // it("'f(x) = 2 * x\nf(4)' returns 8", function() {
+        //     var parser = new Parser('f(x) = 2 * x\nf(4)');
+        //     parser.eval().should.be.equal(8);
+        // });
+
+        // it("'f() = 4' returns true", function() {
+        //     var parser = new Parser('f() = 4');
+        //     parser.eval().should.be.ok;
+        // });
+
+        // it("'f() = 4\nf() * f()' returns 16", function() {
+        //     var parser = new Parser('f() = 4\nf() * f()');
+        //     parser.eval().should.be.equal(16);
+        // });
+    });
+
     describe('nested function calls', function() {
         it("'f(x) = 2 * x\ng(x) = x + 3\ng(f(4))' returns 11", function() {
             var parser = new Parser('f(x) = 2 * x\ng(x) = x + 3\ng(f(4))');
