@@ -44,4 +44,32 @@ describe('lexer', function() {
     		result.next().value.should.eql('+');
     	});
     });
+
+    describe('with string of \'1  2\'', function() {
+    	var input = '1  2';
+    	it('next() returns token of type token.type.numeric', function() {
+    		var result = new Lexer(input);
+    		result.next().type.should.eql(token.type.numeric);
+    	});
+
+    	it('next() called twice returns token of type token.type.numeric', function() {
+    		var result = new Lexer(input);
+    		result.next();
+    		result.next().type.should.eql(token.type.numeric);
+    	});
+    })
+
+     describe('with string of \'1\t2\'', function() {
+    	var input = '1\t2';
+    	it('next() returns token of type token.type.numeric', function() {
+    		var result = new Lexer(input);
+    		result.next().type.should.eql(token.type.numeric);
+    	});
+
+    	it('next() called twice returns token of type token.type.numeric', function() {
+    		var result = new Lexer(input);
+    		result.next();
+    		result.next().type.should.eql(token.type.numeric);
+    	});
+    })
 });
