@@ -127,4 +127,11 @@ describe('Parser.eval()', function() {
             parser.eval().should.be.equal(4);
         });
     });
+
+    describe('with multiline input', function() {
+        it("'8 + 2\n11 - 3' returns 8", function() {
+            var parser = new Parser('8 + 2\n11 - 3');
+            parser.eval().should.be.equal(8);
+        })
+    });
 });
