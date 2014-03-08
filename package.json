@@ -1,5 +1,5 @@
 {
-  "name": "graphy",
+  "name": "plot.js",
   "version": "0.0.1",
   "description": "Graph creation library for node.js",
   "main": "lib/main.js",
