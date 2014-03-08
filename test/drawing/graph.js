@@ -7,10 +7,10 @@ describe('Graph', function() {
 
         graph.addPoint(1, 1);
 
-        graph.x.min.should.equal(.8);
-        graph.x.max.should.equal(1.2);
-        graph.y.min.should.equal(.8);
-        graph.y.max.should.equal(1.2);
+        graph.x.min.should.equal(1);
+        graph.x.max.should.equal(1);
+        graph.y.min.should.equal(1);
+        graph.y.max.should.equal(1);
     });
 
     it('with setting bounds and then adding points', function() {
@@ -22,8 +22,8 @@ describe('Graph', function() {
 
         graph.x.min.should.equal(-1);
         graph.x.max.should.equal(1);
-        graph.y.min.should.equal(.8);
-        graph.y.max.should.equal(1.2);
+        graph.y.min.should.equal(1);
+        graph.y.max.should.equal(1);
     });
 
     it('with setting bounds and then adding points', function() {
@@ -33,8 +33,8 @@ describe('Graph', function() {
 
         graph.addPoint(1, -3);
 
-        graph.x.min.should.equal(.8);
-        graph.x.max.should.equal(1.2);
+        graph.x.min.should.equal(1);
+        graph.x.max.should.equal(1);
         graph.y.min.should.equal(-1);
         graph.y.max.should.equal(1);
     });
