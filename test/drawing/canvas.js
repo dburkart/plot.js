@@ -12,30 +12,33 @@ describe('canvas', function() {
     it('can add points properly', function() {
         var canvas = new Canvas();
 
+        canvas.graph.setBoundsX(0, 100);
+        canvas.graph.setBoundsY(0, 100);
+
         canvas.addPoint(0,1);
         canvas.addPoint(3,4);
 
-        canvas.points.should.containDeep([ [ 0, 3 ], [ 9, 12 ]]);
+        canvas.points().should.containDeep([ [ 0, 3 ], [ 9, 12 ]]);
     });
 
     it('Points transform properly', function() {
         var canvas = new Canvas();
 
+        canvas.graph.setBoundsX(0, 100);
+        canvas.graph.setBoundsY(0, 100);
+
         canvas.addPoint(0,1);
         canvas.addPoint(3,4);
         canvas.addPoint(5,20);
 
-        canvas.transform();
-
-        canvas.points.should.containDeep([ [ 0, 297 ], [ 9, 288 ], [ 15, 240 ]]);
-
-        canvas.transform();
-
-        canvas.points.should.containDeep([ [ 0, 3 ], [ 9, 12 ], [ 15, 60 ]]);
+        canvas.transform().should.containDeep([ [ 0, 297 ], [ 9, 288 ], [ 15, 240 ]]);
     });
 
     it('Converts points to path properly', function() {
         var canvas = new Canvas();
+
+        canvas.graph.setBoundsX(0, 100);
+        canvas.graph.setBoundsY(0, 100);
 
         canvas.addPoint(0,1);
         canvas.addPoint(3,4);

@@ -276,21 +276,6 @@ describe('Parser.eval()', function() {
             var parser = new Parser('f(x) = x = 2 + x,\n2 * x\nf(2)');
             parser.eval().should.be.equal(8);
         });
-
-        // it("'f(x) = 2 * x\nf(4)' returns 8", function() {
-        //     var parser = new Parser('f(x) = 2 * x\nf(4)');
-        //     parser.eval().should.be.equal(8);
-        // });
-
-        // it("'f() = 4' returns true", function() {
-        //     var parser = new Parser('f() = 4');
-        //     parser.eval().should.be.ok;
-        // });
-
-        // it("'f() = 4\nf() * f()' returns 16", function() {
-        //     var parser = new Parser('f() = 4\nf() * f()');
-        //     parser.eval().should.be.equal(16);
-        // });
     });
 
     describe('nested function calls', function() {
@@ -301,6 +286,13 @@ describe('Parser.eval()', function() {
         it("'f(x) = 2 * x\nsqrt(f(8))' returns 4", function() {
             var parser = new Parser('f(x) = 2 * x\nsqrt(f(8))');
             parser.eval().should.be.equal(4);
+        });
+    });
+
+    describe('expressions in function calls', function() {
+        it("'n = 2\nf(x) = 2 * x\nf( n * 2 )' returns 8", function() {
+            var parser = new Parser('n = 2\nf(x) = 2 * x\nf( n * 2 )');
+            parser.eval().should.be.equal(8);
         });
     });
 });
