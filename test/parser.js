@@ -216,6 +216,13 @@ describe('Parser.eval()', function() {
         })
     });
 
+    describe("with multiline input 'x,\n2\'", function() {
+        it('returns 2', function() {
+            var parser = new Parser('x,\n2');
+            parser.eval().should.be.equal(2);
+        })
+    })
+
     // Test variable assignment
     describe('variable assignment', function () {
         it("'a = 2' returns 2", function() {
