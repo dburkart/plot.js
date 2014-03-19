@@ -1,5 +1,5 @@
 var should = require('should');
-var token = require('../lib/token');
+var token = require('../../lib/interpreter/token');
 
 describe('token.precedence', function() {
     describe('+', function() {

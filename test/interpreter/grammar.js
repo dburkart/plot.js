@@ -1,7 +1,7 @@
 var should = require('should');
-var grammar = require('../lib/grammar');
-var token = require('../lib/token');
-var Lexer = require('../lib/lexer');
+var grammar = require('../../lib/interpreter/grammar');
+var token = require('../../lib/interpreter/token');
+var Lexer = require('../../lib/interpreter/lexer');
 
 var getTokens = function(string) {
     var lexer = new Lexer(string);

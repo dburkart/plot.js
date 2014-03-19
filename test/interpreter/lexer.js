@@ -1,6 +1,6 @@
 var should = require('should');
-var Lexer = require('../lib/lexer');
-var token = require('../lib/token');
+var Lexer = require('../../lib/interpreter/lexer');
+var token = require('../../lib/interpreter/token');
 
 describe('lexer', function() {
     describe('with empty string', function() {

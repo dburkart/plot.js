@@ -1,6 +1,6 @@
 var should = require('should');
-var Parser = require('../lib/parser');
-var Lexer = require('../lib/lexer');
+var Parser = require('../../lib/interpreter/parser');
+var Lexer = require('../../lib/interpreter/lexer');
 
 describe('Testing builtin', function() {
 	it('sqrt(16) is 4', function() {
