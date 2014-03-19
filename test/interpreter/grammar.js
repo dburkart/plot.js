@@ -91,10 +91,12 @@ describe('[grammar.type.statement_list]', function() {
     it("'b * 3' is a valid statement_list", function() {
         var tokens = getTokens('b * 3');
         grammar.statement_list(tokens).should.be.ok;
+        grammar.statement_list(tokens).tokens.length.should.be.eql(1);
     });
     it("'b * 3, 4, 5' is a valid statement_list", function() {
         var tokens = getTokens('b * 3, 4 ,5');
         grammar.statement_list(tokens).should.be.ok;
+        grammar.statement_list(tokens).tokens.length.should.be.eql(3);
     });
 });
 
