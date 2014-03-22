@@ -286,4 +286,11 @@ describe('[grammar.classify]', function() {
         program.length.should.be.eql(1);
         program[0].type.should.be.eql(grammar.type.statement);
     })
+
+    it("'\n'", function() {
+        var tokens = getTokens('\n');
+        var program = grammar.classify(tokens);
+
+        program.length.should.be.eql(0);
+    })
 });
