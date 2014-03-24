@@ -122,6 +122,16 @@ describe('token.make', function() {
             result.should.eql(token.type.binaryOp);
         });
     });
+
+    it('with invalid characters', function() {
+        var result;
+        try {
+            result = token.make('@');
+        } catch (err) {
+            err.should.be.eql("Unrecognized characters '@'");
+        }
+        
+    })
 });
 
 describe('token.validAsPrefix()', function() {
