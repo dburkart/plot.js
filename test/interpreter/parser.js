@@ -302,4 +302,29 @@ describe('Parser.eval()', function() {
             parser.eval().should.be.equal(8);
         });
     });
+
+    // Test parse errors
+    describe('call of undefined function', function() {
+        it("'f(2)' returns error message", function() {
+            var result;
+            try {
+                var parser = new Parser('f(2)');
+                parser.eval();
+            } catch (err) {
+                err.should.be.eql("Function 'f' has not been defined.");
+            }
+        });
+    });
+
+    describe('usage of undefined variable', function() {
+        it("'x' returns error message", function() {
+            var result;
+            try {
+                var parser = new Parser('x');
+                parser.eval();
+            } catch (err) {
+                err.should.be.eql("Variable 'x' has not been defined.");
+            }
+        });
+    });
 });
