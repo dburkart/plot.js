@@ -178,7 +178,7 @@ describe('[grammar.type.function_call]', function() {
 describe('[grammar.classify]', function() {
     it("'x + 2'", function() {
         var tokens = getTokens('x + 2');
-        grammar.classify(tokens)[0].tokens.should.containDeep([ 
+        grammar.classify(tokens)[0].tokens.should.containDeep([
             { type: 3, value: 'x' },
             { type: 4, value: '+' },
             { type: 2, value: 2 } ]);
@@ -186,10 +186,10 @@ describe('[grammar.classify]', function() {
     it("'f(x) + 2'", function() {
         var tokens = getTokens('f(x) + 2');
         grammar.classify(tokens)[0].tokens.should.containDeep([ { type: 104,
-    tokens: 
+    tokens:
      [ { type: 3, value: 'f' },
        { type: 101,
-         tokens: 
+         tokens:
           [ { type: 102,
               tokens: [ { type: 3, value: 'x' } ],
               reference_pos: 2 } ],
@@ -201,12 +201,12 @@ describe('[grammar.classify]', function() {
     it("'f(x + 2)'", function() {
         var tokens = getTokens('f(x + 2)');
         grammar.classify(tokens)[0].tokens.should.containDeep([ { type: 104,
-    tokens: 
+    tokens:
      [ { type: 3, value: 'f' },
        { type: 101,
-         tokens: 
+         tokens:
           [ { type: 102,
-              tokens: 
+              tokens:
                [ { type: 3, value: 'x' },
                  { type: 4, value: '+' },
                  { type: 2, value: 2 } ],
@@ -220,12 +220,12 @@ describe('[grammar.classify]', function() {
 
         program.length.should.be.eql(2);
         program[1].tokens.should.containDeep( [ { type: 104,
-    tokens: 
+    tokens:
      [ { type: 3, value: 'f' },
        { type: 101,
-         tokens: 
+         tokens:
           [ { type: 102,
-              tokens: 
+              tokens:
                [ { type: 2, value: 4 },
                  { type: 4, value: '+' },
                  { type: 2, value: 2 } ],
@@ -262,7 +262,7 @@ describe('[grammar.classify]', function() {
         program.length.should.be.eql(1);
         program[0].type.should.be.eql(grammar.type.statement);
         program[0].tokens.should.containDeep([ { type: 104,
-    tokens: 
+    tokens:
      [ { type: 3, value: 'f' },
        { type: 101,
          tokens: [ { type: 102, tokens: [ 0 ], reference_pos: 0 } ],

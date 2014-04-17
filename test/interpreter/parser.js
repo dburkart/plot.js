@@ -10,6 +10,13 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('with \'\n3\'', function() {
+        it('returns 3', function() {
+            var parser = new Parser('\n3');
+            parser.eval().should.be.equal(3);
+        });
+    });
+
     describe('with \'x = 3\nx\'', function() {
         it('returns 3', function() {
             var parser = new Parser('x = 3\nx');

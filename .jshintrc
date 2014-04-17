@@ -10,7 +10,5 @@
     "trailing": true,
     "undef": true,
     "unused": true,
-    "predef" : [
-      "require",
-    ]
+    "indent": 4
 }
