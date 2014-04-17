@@ -285,6 +285,17 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('function definitions consisting of function calls', function() {
+        it("'f(x) = x * 2\ng(x) = f(x)\ng(2)' returns 4", function() {
+            var parser = new Parser('f(x) = x * 2\ng(x) = f(x)\ng(2)');
+            parser.eval().should.be.equal(4);
+        });
+        it("'f(x) = sin(x)\nf(100)' returns .5", function() {
+            var parser = new Parser('f(x) = sin(x)\nplot_x(f, -1, 1)');
+            parser.eval()
+        });
+    });
+
     describe('nested function calls', function() {
         it("'f(x) = 2 * x\ng(x) = x + 3\ng(f(4))' returns 11", function() {
             var parser = new Parser('f(x) = 2 * x\ng(x) = x + 3\ng(f(4))');
