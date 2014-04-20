@@ -297,7 +297,7 @@ describe('Parser.eval()', function() {
             var parser = new Parser('f(x) = x * 2\ng(x) = f(x)\ng(2)');
             parser.eval().should.be.equal(4);
         });
-        it("'f(x) = sin(x)\nf(100)' returns .5", function() {
+        it("'f(x) = sin(x)\nplot_x(f, -1, 1)", function() {
             var parser = new Parser('f(x) = sin(x)\nplot_x(f, -1, 1)');
             parser.eval()
         });
