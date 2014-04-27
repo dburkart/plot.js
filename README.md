@@ -20,4 +20,4 @@ f(x) = x ^ 2
 plot_x(f, -5, 5)
 ```
 
-Full documentation for the graphing language has not been finished yet.
+Full documentation for the graphing language has not been finished yet, however that document has begun to take shape here: [Plot-language](https://github.com/dburkart/plot.js/wiki/Plot-language)
