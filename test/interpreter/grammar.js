@@ -16,11 +16,6 @@ var getTokens = function(string) {
     return tokens;
 }
 
-// var tokens = getTokens('f()');
-// var program = grammar.classify(tokens);
-
-// console.log(program.tokens);
-
 describe('[grammar.type.var_list]', function() {
     it("'a, b, c' is a valid var_list", function() {
         var tokens = getTokens('a, b, c');
