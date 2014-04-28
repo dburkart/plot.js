@@ -321,6 +321,13 @@ describe('Parser.eval()', function() {
         });
     });
 
+    describe('Parenthesis are weird: ', function() {
+        it("'f() = (sin(3) + cos(4)) * 7\nf()' returns ", function() {
+            var parser = new Parser('f() = (sin(3) + cos(4)) * 7\nf()');
+            parser.eval().should.be.approximately(-3.58, 0.01);
+        })
+    })
+
     // Test parse errors
     describe('call of undefined function', function() {
         it("'f(2)' returns error message", function() {
