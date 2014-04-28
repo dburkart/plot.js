@@ -297,7 +297,7 @@ describe('Parser.eval()', function() {
             var parser = new Parser('f(x) = x * 2\ng(x) = f(x)\ng(2)');
             parser.eval().should.be.equal(4);
         });
-        it("'f(x) = 2 * x\ng(x) = f(x)\nf(4)\nf(10)'", function() {
+        it("'f(x) = 2 * x\ng(x) = f(x)\ng(4)\ng(10)'", function() {
             var parser = new Parser('f(x) = 2 * x\ng(x) = f(x)\ng(4)\ng(10)');
             parser.eval().should.be.equal(20);
         });
