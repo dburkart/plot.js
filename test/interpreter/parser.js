@@ -322,11 +322,18 @@ describe('Parser.eval()', function() {
     });
 
     describe('Parenthesis are weird: ', function() {
-        it("'f() = (sin(3) + cos(4)) * 7\nf()' returns ", function() {
-            var parser = new Parser('f() = (sin(3) + cos(4)) * 7\nf()');
-            parser.eval().should.be.approximately(-3.58, 0.01);
-        })
-    })
+        it("'f() = (sin(3))\nf()' returns ", function() {
+            var parser = new Parser('f() = (sin(3))\nf()');
+            parser.eval(true).should.be.approximately(0.14, 0.01);
+        });
+    });
+
+    describe('Parenthesis are weird pt. 2: ', function() {
+        it("'(sin(3) + cos(4))' returns ", function() {
+            var parser = new Parser('(sin(3) + cos(4))');
+            parser.eval().should.be.approximately(-.51, 0.01);
+        });
+    });
 
     // Test parse errors
     describe('call of undefined function', function() {
