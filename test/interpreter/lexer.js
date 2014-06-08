@@ -10,8 +10,8 @@ describe('lexer', function() {
         });
 
         it('next() returns token of type token.type.nil', function() {
-        	var result = new Lexer(' ');
-        	result.next().type.should.eql(token.type.nil);
+            var result = new Lexer(' ');
+            result.next().type.should.eql(token.type.nil);
         });
 
         it('next() called twice returns token of type token.type.nil', function() {
@@ -22,33 +22,33 @@ describe('lexer', function() {
     });
 
     describe('with string of \'1 + 2\'', function() {
-    	var input = '1 + 2';
-    	it('returns an object with input of \'1 + 2\'', function() {
-    		var result = new Lexer(input);
-    		result.input.should.eql(input);
-    	});
+        var input = '1 + 2';
+        it('returns an object with input of \'1 + 2\'', function() {
+            var result = new Lexer(input);
+            result.input.should.eql(input);
+        });
 
-    	it('next() returns token of type token.type.numeric', function() {
-    		var result = new Lexer(input);
-    		result.next().type.should.eql(token.type.numeric);
-    	});
+        it('next() returns token of type token.type.numeric', function() {
+            var result = new Lexer(input);
+            result.next().type.should.eql(token.type.numeric);
+        });
 
-    	it('next() returns token of value 1', function() {
-    		var result = new Lexer(input);
-    		result.next().value.should.eql(1);
-    	});
+        it('next() returns token of value 1', function() {
+            var result = new Lexer(input);
+            result.next().value.should.eql(1);
+        });
 
-    	it('next() called twice returns token of type token.type.unaryOp', function() {
-    		var result = new Lexer(input);
-    		result.next();
-    		result.next().type.should.eql(token.type.unaryOp);
-    	});
+        it('next() called twice returns token of type token.type.unaryOp', function() {
+            var result = new Lexer(input);
+            result.next();
+            result.next().type.should.eql(token.type.unaryOp);
+        });
 
-    	it('next() called twice returns token of value +', function() {
-    		var result = new Lexer(input);
-    		result.next();
-    		result.next().value.should.eql('+');
-    	});
+        it('next() called twice returns token of value +', function() {
+            var result = new Lexer(input);
+            result.next();
+            result.next().value.should.eql('+');
+        });
     });
 
     describe('with string of \'1+2\'', function() {
@@ -103,31 +103,31 @@ describe('lexer', function() {
     });
 
     describe('with string of \'1  2\'', function() {
-    	var input = '1  2';
-    	it('next() returns token of type token.type.numeric', function() {
-    		var result = new Lexer(input);
-    		result.next().type.should.eql(token.type.numeric);
-    	});
+        var input = '1  2';
+        it('next() returns token of type token.type.numeric', function() {
+            var result = new Lexer(input);
+            result.next().type.should.eql(token.type.numeric);
+        });
 
-    	it('next() called twice returns token of type token.type.numeric', function() {
-    		var result = new Lexer(input);
-    		result.next();
-    		result.next().type.should.eql(token.type.numeric);
-    	});
+        it('next() called twice returns token of type token.type.numeric', function() {
+            var result = new Lexer(input);
+            result.next();
+            result.next().type.should.eql(token.type.numeric);
+        });
     });
 
     describe('with string of \'1\t2\'', function() {
-    	var input = '1\t2';
-    	it('next() returns token of type token.type.numeric', function() {
-    		var result = new Lexer(input);
-    		result.next().type.should.eql(token.type.numeric);
-    	});
+        var input = '1\t2';
+        it('next() returns token of type token.type.numeric', function() {
+            var result = new Lexer(input);
+            result.next().type.should.eql(token.type.numeric);
+        });
 
-    	it('next() called twice returns token of type token.type.numeric', function() {
-    		var result = new Lexer(input);
-    		result.next();
-    		result.next().type.should.eql(token.type.numeric);
-    	});
+        it('next() called twice returns token of type token.type.numeric', function() {
+            var result = new Lexer(input);
+            result.next();
+            result.next().type.should.eql(token.type.numeric);
+        });
     });
 
     describe('with string of \'-5\'', function() {
