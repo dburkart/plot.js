@@ -19,10 +19,10 @@
   "author": "Dana Burkart",
   "license": "MIT",
   "devDependencies": {
-      "mocha": "",
-      "should": "",
-      "grunt": "~0.4.2",
-      "grunt-contrib-jshint" : "~0.10"
+      "mocha": "1.20.x",
+      "should": "4.0.x",
+      "grunt": "0.4.x",
+      "grunt-contrib-jshint" : "0.10.x"
   },
   "engine": "node >= 0.10"
 }
