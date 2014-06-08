@@ -23,5 +23,6 @@
       "should": "",
       "grunt": "~0.4.2",
       "grunt-contrib-jshint" : "~0.10"
-  }
+  },
+  "engine": "node >= 0.10"
 }
